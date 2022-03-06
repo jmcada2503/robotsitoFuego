@@ -4,6 +4,15 @@
 
 - Ninguna
 
+
+
+
+
+
+
+
+
 ## Prototipo:
 
-![Primer protoripo](./resources/Plano Conjunto.jpeg)
+![Primer protoripo](resources/Frontal.jpg)
+
