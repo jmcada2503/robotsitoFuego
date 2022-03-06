@@ -3,3 +3,7 @@
 ## Ideas:
 
 - Ninguna
+
+## Prototipo:
+
+![Primer protoripo](./resources/Plano Conjunto.jpeg)
