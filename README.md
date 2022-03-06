@@ -14,5 +14,5 @@
 
 ## Prototipo:
 
-![Primer protoripo](resources/Frontal.jpg)
+![Primer protoripo](resources/Frontal.jpeg)
 
