@@ -1,36 +1,57 @@
-int speedPin = 11;
-int dirPin1 = 12;
-int dirPin2 = 13; 
-int speedMotor= 255; 
+class Motor {
 
-int speedPin2 = 3; 
-int dirPin3 = 2; 
-int dirPin4 = 4; 
+    public:
+        int maxSpeed;
+        int speedPin;
+        int inputA;
+        int inputB;
 
+        Motor() {}
 
+        void init(int MaxSpeed, int SpeedPin, int InputA, int InputB) {
+            maxSpeed = MaxSpeed;
+            speedPin = SpeedPin;
+            inputA = InputA;
+            inputB = InputB;
+            pinMode(speedPin, OUTPUT);
+            pinMode(inputA, OUTPUT);
+            pinMode(inputB, OUTPUT);
+        }
 
+        void setSpeed(int percentage) {
+            int speed = (maxSpeed*percentage)/100;
+            analogWrite(speedPin,speed);
+        }
 
+        void moveForward() {
+            digitalWrite(inputA, HIGH);
+            digitalWrite(inputB, LOW);
+        }
+        
+        void moveBackward() {
+            digitalWrite(inputA, LOW);
+            digitalWrite(inputB, HIGH);
+        }
+        
+        void stop() {
+            digitalWrite(inputA, LOW);
+            digitalWrite(inputB, LOW);
+        }
+
+};
+
+Motor rightMotor;
+Motor leftMotor;
 
 void setup(){
-  Serial.begin(9600); 
-  pinMode(speedPin, OUTPUT); 
-  pinMode(dirPin1, OUTPUT);
-  pinMode(dirPin2, OUTPUT); 
-  pinMode(speedPin2, OUTPUT); 
-  pinMode(dirPin3, OUTPUT);
-  pinMode(dirPin4, OUTPUT); 
-  
-  
+    Serial.begin(9600); 
+    rightMotor.init(255, 11, 12, 13);
+    leftMotor.init(200, 3, 2, 4);
 }
 
 void loop() {
-  digitalWrite(dirPin1, HIGH); 
-  digitalWrite(dirPin2, LOW); 
-  digitalWrite(dirPin3, HIGH);
-  digitalWrite(dirPin4, LOW); 
-  analogWrite(speedPin, 255);
-  analogWrite(speedPin2, 255); 
-  delay(105);
-  analogWrite (speedPin, speedMotor);
-  analogWrite (speedPin2, speedMotor); 
+    rightMotor.setSpeed(100);
+    leftMotor.setSpeed(100);
+    rightMotor.moveForward();
+    leftMotor.moveForward();
 }
